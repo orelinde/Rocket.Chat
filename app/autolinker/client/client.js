@@ -4,6 +4,7 @@ import Autolinker from 'autolinker';
 
 import { settings } from '../../settings';
 import { callbacks } from '../../callbacks';
+import ConsLinkAutoLinker from '../client-custom/consLinkAutoLinker';
 
 const createAutolinker = () => {
 	const regUrls = new RegExp(settings.get('AutoLinker_UrlsRegExp'));
@@ -68,6 +69,8 @@ const renderMessage = (message) => {
 			return autolinker.link(msgPart);
 		})
 		.join('');
+
+	ConsLinkAutoLinker.link(message);
 
 	return message;
 };
